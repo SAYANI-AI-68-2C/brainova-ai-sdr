@@ -162,10 +162,14 @@ mongoose.connect(MONGO_URI)
     console.log('ℹ️ Operating in demo/mock mode if database is offline.');
   });
 
-app.listen(PORT, () => {
-  console.log(`====================================================`);
-  console.log(`🚀 BRAINOVA AI SDR Agent Backend Live on Port ${PORT}`);
-  console.log(`⚡ Algorand x402 Micropayment Protocol Active`);
-  console.log(`🏆 InnoFusion 3.0 × Algorand x402 Track`);
-  console.log(`====================================================`);
-});
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`====================================================`);
+    console.log(`🚀 BRAINOVA AI SDR Agent Backend Live on Port ${PORT}`);
+    console.log(`⚡ Algorand x402 Micropayment Protocol Active`);
+    console.log(`🏆 InnoFusion 3.0 × Algorand x402 Track`);
+    console.log(`====================================================`);
+  });
+}
+
+module.exports = app;
